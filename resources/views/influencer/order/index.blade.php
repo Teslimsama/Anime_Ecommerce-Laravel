@@ -1,11 +1,11 @@
-@extends('user.layouts.master')
+@extends('influencer.layouts.master')
 
 @section('main-content')
  <!-- DataTales Example -->
  <div class="card shadow mb-4">
      <div class="row">
          <div class="col-md-12">
-            @include('user.layouts.notification')
+            @include('influencer.layouts.notification')
          </div>
      </div>
     <div class="card-header py-3">
@@ -53,12 +53,12 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{route('user.order.show',$order->id)}}" class="btn btn-warning btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
-                        <form method="POST" action="{{route('user.order.delete',[$order->id])}}">
+                        <a href="{{route('influencer.order.show',$order->id)}}" class="btn btn-warning btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
+                        {{-- <form method="POST" action="{{route('influencer.order.delete',[$order->id])}}">
                           @csrf
                           @method('delete')
                               <button class="btn btn-danger btn-sm dltBtn" data-id={{$order->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                        </form>
+                        </form> --}}
                     </td>
                 </tr>
                 @php

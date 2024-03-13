@@ -191,16 +191,16 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 Route::group(['prefix' => '/mid_admin', 'middleware' => ['auth', 'influencer']], function () {
     Route::get('/', 'MidAdminController@index')->name('midadmin');
     // Profile
-    Route::get('/profile', 'HomeController@profile')->name('user-profile');
-    Route::post('/profile/{id}', 'HomeController@profileUpdate')->name('user-profile-update');
+    Route::get('/profile', 'MidAdminController@profile')->name('influencer-profile');
+    Route::post('/profile/{id}', 'MidAdminController@profileUpdate')->name('influencer-profile-update');
     //  Order
-    Route::get('/order', "HomeController@orderIndex")->name('user.order.index');
-    Route::get('/order/show/{id}', "HomeController@orderShow")->name('user.order.show');
-    Route::delete('/order/delete/{id}', 'HomeController@userOrderDelete')->name('user.order.delete');
+    Route::get('/order', "MidAdminController@orderIndex")->name('influencer.order.index');
+    Route::get('/order/show/{id}', "MidAdminController@orderShow")->name('influencer.order.show');
+    Route::delete('/order/delete/{id}', 'MidAdminController@userOrderDelete')->name('influencer.order.delete');
     // Coupon
-    Route::resource('/coupon', 'CouponController');
+    Route::resource('/coupon', 'MidCouponController');
     // Password Change
-    Route::get('change-password', 'HomeController@changePassword')->name('user.change.password.form');
-    Route::post('change-password', 'HomeController@changPasswordStore')->name('change.password');
+    Route::get('change-password', 'MidAdminController@changePassword')->name('influencer.change.password.form');
+    Route::post('change-password', 'MidAdminController@changPasswordStore')->name('change.password');
 
 });

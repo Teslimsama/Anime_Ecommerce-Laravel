@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('influencer.layouts.master')
 
 @section('main-content')
 

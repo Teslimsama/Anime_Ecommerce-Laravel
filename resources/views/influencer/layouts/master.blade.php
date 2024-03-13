@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('backend.layouts.head')
+@include('influencer.layouts.head')
 
 <body id="page-top">
 
@@ -9,7 +9,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('backend.layouts.sidebar')
+    @include('influencer.layouts.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -19,7 +19,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        @include('backend.layouts.header')
+        @include('influencer.layouts.header')
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -28,7 +28,7 @@
 
       </div>
       <!-- End of Main Content -->
-      @include('backend.layouts.footer')
+      @include('influencer.layouts.footer')
 
 </body>
 
