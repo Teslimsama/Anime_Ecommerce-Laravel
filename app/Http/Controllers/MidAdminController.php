@@ -82,7 +82,7 @@ class MidAdminController extends Controller
     }
     public function changePassword()
     {
-        return view('influencer.layouts.userPasswordChange');
+        return view('influencer.layouts.changePassword');
     }
     public function changPasswordStore(Request $request)
     {
@@ -94,7 +94,7 @@ class MidAdminController extends Controller
 
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
-        return redirect()->route('user')->with('success', 'Password changed successfully');
+        return redirect()->route('midadmin')->with('success', 'Password changed successfully');
     }
     public function incomeChart()
     {

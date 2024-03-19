@@ -379,7 +379,7 @@
                                                     @foreach (Helper::shipping() as $shipping)
                                                         <option value="{{ $shipping->id }}" class="shippingOption"
                                                             data-price="{{ $shipping->price }}">{{ $shipping->type }}:
-                                                            ${{ $shipping->price }}</option>
+                                                            ₦{{ $shipping->price }}</option>
                                                     @endforeach
                                                 </select>
                                             @else
@@ -399,10 +399,10 @@
                                         @endphp
                                         @if (session('coupon'))
                                             <li class="last" id="order_total_price">
-                                                Total<span>${{ number_format($total_amount, 2) }}</span></li>
+                                                Total<span>₦{{ number_format($total_amount, 2) }}</span></li>
                                         @else
                                             <li class="last" id="order_total_price">
-                                                Total<span>${{ number_format($total_amount, 2) }}</span></li>
+                                                Total<span>₦{{ number_format($total_amount, 2) }}</span></li>
                                         @endif
                                     </ul>
                                 </div>

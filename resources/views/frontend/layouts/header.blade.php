@@ -39,8 +39,8 @@
                                 @elseif(Auth::user()->role == 'influencer')
                                     <li><i class="fa fa-truck"></i> <a href="{{ route('order.track') }}">Track Order</a>
                                     </li>
-                                    <li><i class="ti-user"></i> <a href="{{ route('midadmin') }}"
-                                            target="_blank"> Dashboard</a></li>
+                                    <li><i class="ti-user"></i> <a href="{{ route('midadmin') }}" target="_blank">
+                                            Dashboard</a></li>
                                 @else
                                     <li><i class="fa fa-truck"></i> <a href="{{ route('order.track') }}">Track Order</a>
                                     </li>
@@ -145,7 +145,7 @@
                                                 <h4><a href="{{ route('product-detail', $data->product['slug']) }}"
                                                         target="_blank">{{ $data->product['title'] }}</a></h4>
                                                 <p class="quantity">{{ $data->quantity }} x - <span
-                                                        class="amount">${{ number_format($data->price, 2) }}</span></p>
+                                                        class="amount">₦{{ number_format($data->price, 2) }}</span></p>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -153,7 +153,7 @@
                                         <div class="total">
                                             <span>Total</span>
                                             <span
-                                                class="total-amount">${{ number_format(Helper::totalWishlistPrice(), 2) }}</span>
+                                                class="total-amount">₦{{ number_format(Helper::totalWishlistPrice(), 2) }}</span>
                                         </div>
                                         <a href="{{ route('cart') }}" class="btn animate">Cart</a>
                                     </div>
@@ -188,7 +188,7 @@
                                                 <h4><a href="{{ route('product-detail', $data->product['slug']) }}"
                                                         target="_blank">{{ $data->product['title'] }}</a></h4>
                                                 <p class="quantity">{{ $data->quantity }} x - <span
-                                                        class="amount">${{ number_format($data->price, 2) }}</span></p>
+                                                        class="amount">₦{{ number_format($data->price, 2) }}</span></p>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -196,7 +196,7 @@
                                         <div class="total">
                                             <span>Total</span>
                                             <span
-                                                class="total-amount">${{ number_format(Helper::totalCartPrice(), 2) }}</span>
+                                                class="total-amount">₦{{ number_format(Helper::totalCartPrice(), 2) }}</span>
                                         </div>
                                         <a href="{{ route('checkout') }}" class="btn animate">Checkout</a>
                                     </div>
