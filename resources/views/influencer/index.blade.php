@@ -100,6 +100,11 @@
                     </div>
                 </div>
             </div>
+            
+
+        </div>
+
+        <div class="row"> 
             <!-- Order -->
             <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-info shadow h-100 py-2">
@@ -122,11 +127,76 @@
                     </div>
                 </div>
             </div>
+            <!-- Annual Earnings -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Annual Earnings</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            ₦{{ \App\Models\Order::calculateInfluencerCommission() }}
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-money fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Monthly Earnings -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Monthly Earnings</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            ₦{{ \App\Models\Order::calculateInfluencerCommissionForMonth() }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-money fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Daily Earnings -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Daily Earnings</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                            ₦{{ \App\Models\Order::calculateInfluencerCommissionForDay() }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-money fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        {{-- <div class="row"> 
-        </div> --}}
         <div class="row">
 
             <!-- Area Chart -->
@@ -188,7 +258,7 @@
         </script>
         {{-- line chart --}}
         <script type="text/javascript">
-            const url = "{{ route('product.order.income') }}";
+            const url = "{{ route('influencer.order.income') }}";
             // Set new default font family and font color to mimic Bootstrap's default styling
             Chart.defaults.global.defaultFontFamily = 'Nunito',
                 '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';

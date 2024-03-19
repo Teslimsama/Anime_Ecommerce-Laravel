@@ -147,6 +147,7 @@ class CouponController extends Controller
             // dd($total_price);
             session()->put('coupon',[
                 'id'=>$coupon->id,
+                'influencer_id'=>$coupon->influencer_id,
                 'code'=>$coupon->code,
                 'value'=>$coupon->discount($total_price)
             ]);

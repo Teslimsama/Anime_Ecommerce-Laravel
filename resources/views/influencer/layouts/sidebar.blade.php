@@ -41,7 +41,7 @@
         Coupon Settings
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('coupon.index') }}">
+        <a class="nav-link" href="{{ route('coupon') }}">
             <i class="fas fa-table"></i>
             <span>Coupon</span></a>
     </li>

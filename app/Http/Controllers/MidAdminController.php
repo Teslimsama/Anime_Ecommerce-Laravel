@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\User;
@@ -32,17 +33,16 @@ class MidAdminController extends Controller
     public function index()
     {
         $data = User::select(\DB::raw("COUNT(*) as count"), \DB::raw("DAYNAME(created_at) as day_name"), \DB::raw("DAY(created_at) as day"))
-        ->where('created_at', '>', Carbon::today()->subDay(6))
-        ->groupBy('day_name', 'day')
-        ->orderBy('day')
-        ->get();
+            ->where('created_at', '>', Carbon::today()->subDay(6))
+            ->groupBy('day_name', 'day')
+            ->orderBy('day')
+            ->get();
         $array[] = ['Name', 'Number'];
         foreach ($data as $key => $value) {
             $array[++$key] = [$value->day_name, $value->count];
         }
         //  return $data;
         return view('influencer.index')->with('users', json_encode($array));
-        
     }
     public function orderIndex()
     {
@@ -95,5 +95,39 @@ class MidAdminController extends Controller
         User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
         return redirect()->route('user')->with('success', 'Password changed successfully');
+    }
+    public function incomeChart()
+    {
+        // Initialize an array to store monthly commission data
+        $monthlyCommission = [];
+
+        // Get the current year
+        $year = \Carbon\Carbon::now()->year;
+
+        // Loop through each month of the year
+        for ($month = 1; $month <= 12; $month++) {
+            // Retrieve orders associated with the influencer for the current month
+            $influencerId = auth()->user()->id;
+            $orders = Order::where('influencer_id', $influencerId)
+                ->whereYear('created_at', $year)
+                ->whereMonth('created_at', $month)
+                ->get();
+
+            // Initialize variable to store total commission for the month
+            $totalCommission = 0;
+
+            // Loop through each order to calculate commission
+            foreach ($orders as $order) {
+                // Calculate commission for each product based on fixed commission per product
+                $totalCommission += 500;
+            }
+
+            // Store the total commission for the month
+            $monthlyCommission[date('F', mktime(0, 0, 0, $month, 1))] = $totalCommission;
+        }
+
+        $data = $monthlyCommission;
+        // Return the monthly commission data to the view
+        return $data;
     }
 }

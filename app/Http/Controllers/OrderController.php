@@ -99,6 +99,8 @@ class OrderController extends Controller
         $order_data['quantity']=Helper::cartCount();
         if(session('coupon')){
             $order_data['coupon']=session('coupon')['value'];
+            $order_data['coupon_id']=session('coupon')['id'];
+            $order_data['influencer_id']= session('coupon')['influencer_id'];
         }
         if($request->shipping){
             if(session('coupon')){
@@ -137,6 +139,7 @@ class OrderController extends Controller
             $order_data['payment_status'] = 'Unpaid';
         }        
         $order->fill($order_data);
+        // dd($order_data);
         $status=$order->save();
         if($order)
         // dd($order->id);

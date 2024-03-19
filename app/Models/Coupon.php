@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
 {
-    protected $fillable = ['code', 'type', 'value', 'status', 'influencer_id'];
-
+    protected $fillable = ['code', 'type', 'value', 'status', 'influencer_id','coupon_id'];
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     public static function findByCode($code)
     {
         return self::where('code', $code)->first();
