@@ -147,8 +147,8 @@
                         $after_discount = ($product->price - ($product->price * $product->discount) / 100);
                     @endphp
                     <div class="product-price">
-                        <span>${{number_format($after_discount, 2)}}</span>
-                        <del style="padding-left: 4%;">${{number_format($product->price, 2)}}</del>
+                        <span>₦{{number_format($after_discount, 2)}}</span>
+                        <del style="padding-left: 4%;">₦{{number_format($product->price, 2)}}</del>
                     </div>
                 </div>
             </div>
@@ -232,11 +232,11 @@
                             <div class="product-content">
                                 <h3><a href="{{route('product-detail',$product->slug)}}">{{$product->title}}</a></h3>
                                 <div class="product-price">
-                                    <span class="old">${{number_format($product->price,2)}}</span>
+                                    <span class="old">₦{{number_format($product->price,2)}}</span>
                                     @php
                                     $after_discount=($product->price-($product->price*$product->discount)/100)
                                     @endphp
-                                    <span>${{number_format($after_discount,2)}}</span>
+                                    <span>₦{{number_format($after_discount,2)}}</span>
                                 </div>
                             </div>
                         </div>
@@ -444,7 +444,7 @@
                                         @php
                                             $after_discount=($product->price-($product->price*$product->discount)/100);
                                         @endphp
-                                        <h3><small><del class="text-muted">${{number_format($product->price,2)}}</del></small>    ${{number_format($after_discount,2)}}  </h3>
+                                        <h3><small><del class="text-muted">₦{{number_format($product->price,2)}}</del></small>    ₦{{number_format($after_discount,2)}}  </h3>
                                         <div class="quickview-peragraph">
                                             <p>{!! html_entity_decode($product->summary) !!}</p>
                                         </div>
