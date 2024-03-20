@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Order;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
@@ -25,5 +26,9 @@ class Coupon extends Model
         } else {
             return 0;
         }
+    }
+    public function influencer()
+    {
+        return $this->belongsTo(User::class, 'influencer_id');
     }
 }
