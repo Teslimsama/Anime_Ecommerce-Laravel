@@ -8,23 +8,113 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable=['user_id','order_number','sub_total','quantity','delivery_charge','status','total_amount','first_name','last_name','country','post_code','address1','address2','phone','email','payment_method','payment_status','shipping_id','coupon', 'coupon_id', 'influencer_id'];
+    protected $fillable = ['user_id', 'order_number', 'sub_total', 'quantity', 'delivery_charge', 'status', 'total_amount', 'first_name', 'last_name', 'country', 'post_code', 'address1', 'address2', 'phone', 'email', 'payment_method', 'payment_status', 'shipping_id', 'coupon', 'coupon_id', 'influencer_id'];
     public function coupon()
     {
         return $this->belongsTo(Coupon::class);
     }
-    public function cart_info(){
-        return $this->hasMany('App\Models\Cart','order_id','id');
+    public function cart_info()
+    {
+        return $this->hasMany('App\Models\Cart', 'order_id', 'id');
     }
-    public static function getAllOrder($id){
+    public static function getAllOrder($id)
+    {
         return Order::with('cart_info')->find($id);
     }
-    public static function countActiveOrder(){
-        $data=Order::count();
-        if($data){
+    public static function countActiveOrder()
+    {
+        $data = Order::count();
+        if ($data) {
             return $data;
         }
         return 0;
+    }
+    public static function calculateMonthlyIncome()
+    {
+        $currentMonth = Carbon::now()->month;
+        $year = Carbon::now()->year;
+
+        $totalIncome = Order::with('cart_info')
+            ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $currentMonth)
+            ->where('status', 'delivered')
+            ->get()
+            ->sum(function ($order) {
+                return $order->cart_info->sum('amount');
+            });
+
+        // Format the total income for the current month into a string
+        $monthlyIncomeString =  $totalIncome;
+
+        return $monthlyIncomeString;
+    }
+
+
+
+    public static function calculateYearlyIncome()
+    {
+        $year = Carbon::now()->year;
+        $totalIncome = Order::with('cart_info')
+            ->whereYear('created_at', $year)
+            ->where('status', 'delivered')
+            ->get()
+            ->sum(function ($order) {
+                return $order->cart_info->sum('amount');
+            });
+
+        // Format the total income for the year into a string
+        $yearlyIncomeString = $totalIncome;
+
+        return $yearlyIncomeString;
+    }
+
+    public static function calculateDailyIncome()
+    {
+        $now = Carbon::now();
+
+    
+        // Calculate the year, month, and day
+        $year = $now->year;
+        $month = $now->month;
+        $day = $now->day;
+        $daysInMonth = Carbon::create($year, $month)->daysInMonth;
+        $totalIncome = 0;
+
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            $totalIncome += Order::with('cart_info')
+                ->whereYear('created_at', $year)
+                ->whereMonth('created_at', $month)
+                ->whereDay('created_at', $day)
+                ->where('status', 'delivered')
+                ->get()
+                ->sum(function ($order) {
+                    return $order->cart_info->sum('amount');
+                });
+        }
+
+        // Format the total income for the month into a string
+        $monthlyIncomeString = $totalIncome;
+
+        return $monthlyIncomeString;
+    }
+
+    public static function calculateMonthlyIncomeWithoutCommission()
+    {
+        $year = Carbon::now()->year;
+        $currentMonth = Carbon::now()->month;
+        $totalIncome = Order::with('cart_info')
+        ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $currentMonth)
+            ->where('status', 'delivered')
+            ->get()
+            ->sum(function ($order) {
+                return $order->cart_info->sum('amount') - 500; // Deducting 500 Naira per order
+            });
+
+        // Format the total income for the current month into a string
+        $monthlyIncomeString = $totalIncome;
+
+        return $monthlyIncomeString;
     }
     public static function calculateInfluencerCommission()
     {
@@ -136,7 +226,7 @@ class Order extends Model
     {
         $influencerId = auth()->user()->id;
         $data = Order::where('status', 'active')
-        ->where('influencer_id', $influencerId)
+            ->where('influencer_id', $influencerId)
             ->count();
         return $data;
     }
@@ -145,7 +235,7 @@ class Order extends Model
     {
         $influencerId = auth()->user()->id;
         $data = Order::where('status', 'new')
-        ->where('influencer_id', $influencerId)
+            ->where('influencer_id', $influencerId)
             ->count();
         return $data;
     }
@@ -154,7 +244,7 @@ class Order extends Model
     {
         $influencerId = auth()->user()->id;
         $data = Order::where('status', 'process')
-        ->where('influencer_id', $influencerId)
+            ->where('influencer_id', $influencerId)
             ->count();
         return $data;
     }
@@ -163,7 +253,7 @@ class Order extends Model
     {
         $influencerId = auth()->user()->id;
         $data = Order::where('status', 'delivered')
-        ->where('influencer_id', $influencerId)
+            ->where('influencer_id', $influencerId)
             ->count();
         return $data;
     }
@@ -172,38 +262,42 @@ class Order extends Model
     {
         $influencerId = auth()->user()->id;
         $data = Order::where('status', 'cancel')
-        ->where('influencer_id', $influencerId)
+            ->where('influencer_id', $influencerId)
             ->count();
         return $data;
     }
 
-    public function cart(){
+    public function cart()
+    {
         return $this->hasMany(Cart::class);
     }
 
-    public function shipping(){
-        return $this->belongsTo(Shipping::class,'shipping_id');
+    public function shipping()
+    {
+        return $this->belongsTo(Shipping::class, 'shipping_id');
     }
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id');
     }
-    public static function countNewReceivedOrder(){
+    public static function countNewReceivedOrder()
+    {
         $data = Order::where('status', 'new')->count();
         return $data;
     }
-    public static function countProcessingOrder(){
+    public static function countProcessingOrder()
+    {
         $data = Order::where('status', 'process')->count();
         return $data;
     }
-    public static function countDeliveredOrder(){
+    public static function countDeliveredOrder()
+    {
         $data = Order::where('status', 'delivered')->count();
         return $data;
     }
-    public static function countCancelledOrder(){
+    public static function countCancelledOrder()
+    {
         $data = Order::where('status', 'cancel')->count();
         return $data;
     }
-    
-
 }
