@@ -371,6 +371,7 @@
                                     <ul>
                                         <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">Cart
                                             Subtotal<span>₦{{ number_format(Helper::totalCartPrice(), 2) }}</span></li>
+                                            <input type="hidden" name="product_id" value="{{ implode(',', Helper::getCartProductIds()) }}">
                                         <li class="shipping">
                                             Shipping Cost
                                             @if (count(Helper::shipping()) > 0 && Helper::cartCount() > 0)
@@ -389,7 +390,7 @@
 
                                         @if (session('coupon'))
                                             <li class="coupon_price" data-price="{{ session('coupon')['value'] }}">You
-                                                Save<span>$(session('coupon')['value'],2)}}</span></li>
+                                                Save<span>₦{{ number_format(session('coupon')['value'], 2) }}</span></li>
                                         @endif
                                         @php
                                             $total_amount = Helper::totalCartPrice();

@@ -143,21 +143,21 @@ class CouponController extends Controller
         // return $request->all();
         $coupon = Coupon::where('code', $request->code)->first();
         // dd($coupon);
-        if (!$coupon) {
-            request()->session()->flash('error', 'Invalid coupon code, Please try again');
+        if (!$coupon || $coupon->status !== 'active') {
+            request()->session()->flash('error', 'Invalid or inactive coupon code, Please try again');
             return back();
         }
-        if ($coupon) {
-            $total_price = Cart::where('user_id', auth()->user()->id)->where('order_id', null)->sum('price');
-            // dd($total_price);
-            session()->put('coupon', [
-                'id' => $coupon->id,
-                'influencer_id' => $coupon->influencer_id,
-                'code' => $coupon->code,
-                'value' => $coupon->discount($total_price)
-            ]);
-            request()->session()->flash('success', 'Coupon successfully applied');
-            return redirect()->back();
-        }
+
+        $total_price = Cart::where('user_id', auth()->user()->id)->where('order_id', null)->sum('price');
+        // dd($total_price);
+        session()->put('coupon', [
+            'id' => $coupon->id,
+            'influencer_id' => $coupon->influencer_id,
+            'code' => $coupon->code,
+            'value' => $coupon->discount($total_price)
+        ]);
+        request()->session()->flash('success', 'Coupon successfully applied');
+        return redirect()->back();
     }
+
 }

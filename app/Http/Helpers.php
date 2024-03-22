@@ -6,6 +6,7 @@ use App\Models\PostCategory;
 use App\Models\Order;
 use App\Models\Wishlist;
 use App\Models\Shipping;
+use App\Models\Product;
 use App\Models\Cart;
 // use Auth;
 class Helper{
@@ -82,7 +83,7 @@ class Helper{
     }
     // Cart Count
     public static function cartCount($user_id=''){
-       
+
         if(Auth::check()){
             if($user_id=="") $user_id=auth()->user()->id;
             return Cart::where('user_id',$user_id)->where('order_id',null)->sum('quantity');
@@ -91,6 +92,25 @@ class Helper{
             return 0;
         }
     }
+    public static function getCartProductIds($user_id = '')
+    {
+        $productIds = [];
+
+        if (Auth::check()) {
+            if ($user_id == '') {
+                $user_id = auth()->user()->id;
+            }
+
+            $cartItems = Cart::where('user_id', $user_id)->where('order_id', null)->get();
+
+            foreach ($cartItems as $cartItem) {
+                $productIds[] = $cartItem->product_id;
+            }
+        }
+
+        return $productIds;
+    }
+
     // relationship cart with product
     public function product(){
         return $this->hasOne('App\Models\Product','id','product_id');
@@ -110,7 +130,7 @@ class Helper{
         if(Auth::check()){
             if($user_id=="") $user_id=auth()->user()->id;
             // return Cart::where('user_id',$user_id)->where('order_id',null)->sum('amount');
-            return Cart::where('user_id',$user_id)->where('order_id',null)->sum('price');
+            return Cart::where('user_id',$user_id)->where('order_id',null)->sum('amount');
         }
         else{
             return 0;

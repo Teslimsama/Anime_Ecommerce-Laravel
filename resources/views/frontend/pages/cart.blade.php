@@ -53,7 +53,7 @@
                                                 <p class="product-des">{!! $cart['summary'] !!}</p>
                                             </td>
                                             <td class="price" data-title="Price">
-                                                <span>₦{{ number_format($cart['amount'], 2) }}</span></td>
+                                                <span>₦{{ $cart['price'] }}</span></td>
                                             <td class="qty" data-title="Qty"><!-- Input Order -->
                                                 <div class="input-group">
                                                     <div class="button minus">
@@ -77,7 +77,7 @@
                                                 <!--/ End Input Order -->
                                             </td>
                                             <td class="total-amount cart_single_price" data-title="Total"><span
-                                                    class="money">₦{{ $cart['price'] }}</span></td>
+                                                    class="money">₦{{ number_format($cart['amount'], 2) }}</span></td>
 
                                             <td class="action" data-title="Remove"><a
                                                     href="{{ route('cart-delete', $cart->id) }}"><i
