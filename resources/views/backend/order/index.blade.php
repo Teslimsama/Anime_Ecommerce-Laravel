@@ -21,6 +21,8 @@
               <th>Order No.</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Product</th>
+              <th>Size</th>
               <th>Qty.</th>
               <th>Charge</th>
               <th>Total</th>

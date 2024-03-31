@@ -10,7 +10,7 @@ Version:1.0
 # Normalize
 --------------------------------------------------------------*/
 html {
-	font-family: 'Poppins', sans-serif;
+	font-family:'Montserrat Alternates', sans-serif;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -170,12 +170,13 @@ input,
 select,
 optgroup,
 textarea {
-	color: #424646;
-    font-family: 'Poppins', sans-serif;
-	font-weight:400;
-	font-size: 14px;
-	line-height: 24px;
+    color: #424646;
+    font-family: 'Montserrat Alternates', sans-serif; /* Primary font */
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
 }
+
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 	margin: 0;
@@ -201,7 +202,7 @@ address {
 }
 pre {
 	background: #eee;
-	font-family: 'Poppins', sans-serif;
+	font-family:'Montserrat Alternates', sans-serif;
 	font-size: 15px;
 	font-size: 0.9375rem;
 	line-height: 1.6;
@@ -211,7 +212,7 @@ pre {
 	padding: 1.6em;
 }
 code, kbd, tt, var {
-	font-family: 'Poppins', sans-serif;
+	font-family:'Montserrat Alternates', sans-serif;
 	font-size: 15px;
 	font-size: 0.9375rem;
 }
@@ -254,7 +255,7 @@ big {
 	content: "";
 	height: 2px;
 	width: 50px;
-	background: #8C52FF;
+	background: #B76E79;
 	left: 50%;
 	bottom: 0;
 	margin-left: -25px;
@@ -316,7 +317,7 @@ big {
 	display: inline-block;
 }
 .breadcrumbs ul li a:hover{
-	color:#8C52FF;
+	color:#B76E79;
 }
 /*=============================
 	Start Demos CSS 
@@ -1142,7 +1143,7 @@ object {
 .modal-dialog .modal-content .modal-header .close:hover {
   color: #fff;
   border-color:transparent;
-  background:#8C52FF;
+  background:#B76E79;
 }
 .modal-dialog .modal-content .modal-body {
 	padding: 0px;
@@ -1306,7 +1307,7 @@ object {
 	text-transform:lowercase;
 }
 .quickview-content .nice-select .list li:hover{
-	background:#8C52FF;
+	background:#B76E79;
 	color:#fff;
 }
 
@@ -1340,7 +1341,7 @@ object {
   width: 5px;
   height: 5px;
   border-radius: 100%;
-  background-color: #8C52FF;
+  background-color: #B76E79;
   content: "";
   left: 0;
   top: 50%;
@@ -1417,7 +1418,7 @@ object {
 }
 
 .quickview-content .quickview-action-wrap .quickview-cart a:hover {
-  background-color: #8C52FF;
+  background-color: #B76E79;
   color:#333;
 }
 
@@ -1450,10 +1451,10 @@ object {
   margin-left: 30px;
 }
 .quickview-content .quickview-action-wrap .quickview-wishlist a:hover{
-	color:#8C52FF;
+	color:#B76E79;
 }
 .quickview-content .quickview-action-wrap .quickview-compare a:hover {
-  color:#8C52FF;
+  color:#B76E79;
 }
 @media only screen and (max-width: 767px) {
   .quickview-content .quickview-action-wrap .quickview-compare {
@@ -1660,7 +1661,7 @@ object {
 }
 .modal .owl-carousel .owl-nav div:hover{
 	color:#fff;
-	background:#8C52FF;
+	background:#B76E79;
 }
 .modal .owl-carousel .owl-controls .owl-nav .owl-prev{
 	left:0;
@@ -1703,7 +1704,7 @@ object {
 	border: none;
 }
 .quickview-content .quantity .button .btn:hover{
-	color:#8C52FF;
+	color:#B76E79;
 }
 .quickview-content .quantity .input-number {
 	border: 1px solid #eceded;
@@ -1733,7 +1734,7 @@ object {
 }
 .quickview-content .add-to-cart .btn:hover{
 	color:#fff;
-	background:#8C52FF;
+	background:#B76E79;
 }
 .quickview-content .add-to-cart .btn.min {
 	padding: 0 20px;
@@ -1794,7 +1795,7 @@ object {
   
 }
 .default-social ul li a:hover {
-  color: #8C52FF;
+  color: #B76E79;
 }
 /* End Modal Css */
 
