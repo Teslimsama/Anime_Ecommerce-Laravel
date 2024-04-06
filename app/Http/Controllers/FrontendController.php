@@ -422,5 +422,20 @@ class FrontendController extends Controller
                 return back();
             }
     }
+    // public function subscribe(Request $request)
+    // {
+    //     if (!Newsletter::isSubscribed($request->email)) {
+    //         Newsletter::subscribePending($request->email);
+    //         if (Newsletter::lastActionSucceeded()) {
+    //             return redirect()->route('home')->with('success', 'Subscribed! Please check your email');
+    //         } else {
+    //             Newsletter::getLastError();
+    //             return back()->with('error', 'Something went wrong! Please try again');
+    //         }
+    //     } else {
+    //         return back()->with('error', 'Already Subscribed');
+    //     }
+    // }
     
+
 }

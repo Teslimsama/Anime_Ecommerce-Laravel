@@ -15,13 +15,13 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
@@ -38,6 +38,7 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
+        'bab4ed692c1fd3872849227e2a85791e' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Support/helpers.php',
         '559dba61bcaafa74db6aa5e7e8759117' => __DIR__ . '/../..' . '/app/Http/Helpers.php',
     );
 
@@ -53,6 +54,7 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         ),
         'U' => 
         array (
+            'Unicodeveloper\\Paystack\\' => 24,
             'UniSharp\\LaravelFilemanager\\' => 28,
         ),
         'T' => 
@@ -123,6 +125,7 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
             'Monolog\\' => 8,
             'Mockery\\' => 8,
             'Masterminds\\' => 12,
+            'MailchimpMarketing\\' => 19,
         ),
         'L' => 
         array (
@@ -205,6 +208,10 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Unicodeveloper\\Paystack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src',
         ),
         'UniSharp\\LaravelFilemanager\\' => 
         array (
@@ -401,6 +408,10 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'MailchimpMarketing\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mailchimp/marketing/lib',
         ),
         'League\\OAuth1\\Client\\' => 
         array (
@@ -3416,6 +3427,38 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'League\\OAuth1\\Client\\Signature\\RsaSha1Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/RsaSha1Signature.php',
         'League\\OAuth1\\Client\\Signature\\Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/Signature.php',
         'League\\OAuth1\\Client\\Signature\\SignatureInterface' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/SignatureInterface.php',
+        'MailchimpMarketing\\ApiClient' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ApiClient.php',
+        'MailchimpMarketing\\ApiException' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ApiException.php',
+        'MailchimpMarketing\\Api\\AccountExportApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/AccountExportApi.php',
+        'MailchimpMarketing\\Api\\AccountExportsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/AccountExportsApi.php',
+        'MailchimpMarketing\\Api\\ActivityFeedApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ActivityFeedApi.php',
+        'MailchimpMarketing\\Api\\AuthorizedAppsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/AuthorizedAppsApi.php',
+        'MailchimpMarketing\\Api\\AutomationsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/AutomationsApi.php',
+        'MailchimpMarketing\\Api\\BatchWebhooksApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/BatchWebhooksApi.php',
+        'MailchimpMarketing\\Api\\BatchesApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/BatchesApi.php',
+        'MailchimpMarketing\\Api\\CampaignFoldersApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/CampaignFoldersApi.php',
+        'MailchimpMarketing\\Api\\CampaignsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/CampaignsApi.php',
+        'MailchimpMarketing\\Api\\ConnectedSitesApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ConnectedSitesApi.php',
+        'MailchimpMarketing\\Api\\ConversationsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ConversationsApi.php',
+        'MailchimpMarketing\\Api\\CustomerJourneysApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/CustomerJourneysApi.php',
+        'MailchimpMarketing\\Api\\EcommerceApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/EcommerceApi.php',
+        'MailchimpMarketing\\Api\\FacebookAdsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/FacebookAdsApi.php',
+        'MailchimpMarketing\\Api\\FileManagerApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/FileManagerApi.php',
+        'MailchimpMarketing\\Api\\LandingPagesApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/LandingPagesApi.php',
+        'MailchimpMarketing\\Api\\ListsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ListsApi.php',
+        'MailchimpMarketing\\Api\\PingApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/PingApi.php',
+        'MailchimpMarketing\\Api\\ReportingApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ReportingApi.php',
+        'MailchimpMarketing\\Api\\ReportsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/ReportsApi.php',
+        'MailchimpMarketing\\Api\\RootApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/RootApi.php',
+        'MailchimpMarketing\\Api\\SearchCampaignsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/SearchCampaignsApi.php',
+        'MailchimpMarketing\\Api\\SearchMembersApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/SearchMembersApi.php',
+        'MailchimpMarketing\\Api\\SurveysApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/SurveysApi.php',
+        'MailchimpMarketing\\Api\\TemplateFoldersApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/TemplateFoldersApi.php',
+        'MailchimpMarketing\\Api\\TemplatesApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/TemplatesApi.php',
+        'MailchimpMarketing\\Api\\VerifiedDomainsApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/VerifiedDomainsApi.php',
+        'MailchimpMarketing\\Configuration' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Configuration.php',
+        'MailchimpMarketing\\HeaderSelector' => __DIR__ . '/..' . '/mailchimp/marketing/lib/HeaderSelector.php',
+        'MailchimpMarketing\\ObjectSerializer' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ObjectSerializer.php',
         'Masterminds\\HTML5' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5.php',
         'Masterminds\\HTML5\\Elements' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Elements.php',
         'Masterminds\\HTML5\\Entities' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Entities.php',
@@ -3449,6 +3492,7 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'Mockery\\CountValidator\\AtLeast' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/AtLeast.php',
         'Mockery\\CountValidator\\AtMost' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/AtMost.php',
         'Mockery\\CountValidator\\CountValidatorAbstract' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/CountValidatorAbstract.php',
+        'Mockery\\CountValidator\\CountValidatorInterface' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/CountValidatorInterface.php',
         'Mockery\\CountValidator\\Exact' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/Exact.php',
         'Mockery\\CountValidator\\Exception' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/CountValidator/Exception.php',
         'Mockery\\Exception' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Exception.php',
@@ -5035,6 +5079,7 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'Svg\\Tag\\Shape' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/Shape.php',
         'Svg\\Tag\\Stop' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/Stop.php',
         'Svg\\Tag\\StyleTag' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/StyleTag.php',
+        'Svg\\Tag\\Symbol' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/Symbol.php',
         'Svg\\Tag\\Text' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/Text.php',
         'Svg\\Tag\\UseTag' => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg/Tag/UseTag.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
@@ -5899,6 +5944,12 @@ class ComposerStaticInit8876e50bd6dbbcd94291732c8377b64c
         'UniSharp\\LaravelFilemanager\\LfmUploadValidator' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/LfmUploadValidator.php',
         'UniSharp\\LaravelFilemanager\\Middlewares\\CreateDefaultFolder' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Middlewares/CreateDefaultFolder.php',
         'UniSharp\\LaravelFilemanager\\Middlewares\\MultiUser' => __DIR__ . '/..' . '/unisharp/laravel-filemanager/src/Middlewares/MultiUser.php',
+        'Unicodeveloper\\Paystack\\Exceptions\\IsNullException' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Exceptions/IsNullException.php',
+        'Unicodeveloper\\Paystack\\Exceptions\\PaymentVerificationFailedException' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Exceptions/PaymentVerificationFailedException.php',
+        'Unicodeveloper\\Paystack\\Facades\\Paystack' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Facades/Paystack.php',
+        'Unicodeveloper\\Paystack\\Paystack' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/Paystack.php',
+        'Unicodeveloper\\Paystack\\PaystackServiceProvider' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/PaystackServiceProvider.php',
+        'Unicodeveloper\\Paystack\\TransRef' => __DIR__ . '/..' . '/unicodeveloper/laravel-paystack/src/TransRef.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',

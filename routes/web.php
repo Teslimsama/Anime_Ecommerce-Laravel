@@ -89,6 +89,10 @@ Route::post('/coupon-store', 'CouponController@couponStore')->name('coupon-store
 Route::get('payment', 'PayPalController@payment')->name('payment');
 Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
 Route::get('payment/success', 'PayPalController@success')->name('payment.success');
+// Paystack
+Route::post('/pay',  'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback',  'PaymentController@handleGatewayCallback')->name('payment');
+
 
 
 

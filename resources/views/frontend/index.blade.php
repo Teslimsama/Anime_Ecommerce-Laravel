@@ -413,7 +413,6 @@
     <!-- End Shop Services Area -->
 
     @include('frontend.layouts.newsletter')
-
     <!-- Modal -->
     @if ($product_lists)
         @foreach ($product_lists as $key => $product)
