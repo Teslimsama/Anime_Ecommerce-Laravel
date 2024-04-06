@@ -371,7 +371,8 @@
                                     <ul>
                                         <li class="order_subtotal" data-price="{{ Helper::totalCartPrice() }}">Cart
                                             Subtotal<span>₦{{ number_format(Helper::totalCartPrice(), 2) }}</span></li>
-                                            <input type="hidden" name="product_id" value="{{ implode(',', Helper::getCartProductIds()) }}">
+                                        <input type="hidden" name="product_id"
+                                            value="{{ implode(',', Helper::getCartProductIds()) }}">
                                         <li class="shipping">
                                             Shipping Cost
                                             @if (count(Helper::shipping()) > 0 && Helper::cartCount() > 0)
@@ -416,28 +417,14 @@
                                     <div class="checkbox">
                                         {{-- <label class="checkbox-inline" for="1"><input name="updates" id="1" type="checkbox"> Check Payments</label> --}}
                                         <form-group>
-                                            <input name="payment_method" type="radio" value="cod" required> <label>
-                                                Cash On Delivery</label><br>
+                                            <input name="payment_method" type="radio" value="bank_transfer" required>
+                                            <label>Bank Transfer</label><br>
+                                            <input name="payment_method" type="radio" value="paystack" required>
+                                            <label>Paystack</label><br>
+                                            <input name="payment_method" type="radio" value="flutterwave" required>
+                                            <label>Flutterwave</label><br>
                                             <!-- <input name="payment_method"  type="radio" value="paypal"> <label> PayPal</label><br> -->
-                                            <input name="payment_method" type="radio" value="cardpay" required> <label>
-                                                Card Payment</label><br>
 
-                                            <!-- Credit Card Details -->
-                                            <div id="creditCardDetails" style="display: none;">
-                                                <label for="cardNumber">Card Number:</label>
-                                                <input type="text" id="cardNumber" name="card_number"
-                                                    maxlength="16"><br>
-
-                                                <label for="cardName">Name on Card:</label>
-                                                <input type="text" id="cardName" name="card_name"><br>
-
-                                                <label for="expirationDate">Expiration Date:</label>
-                                                <input type="text" id="expirationDate" name="expiration_date"
-                                                    maxlength="5"><br>
-
-                                                <label for="cvv">CVV:</label>
-                                                <input type="text" id="cvv" name="cvv" maxlength="3"><br>
-                                            </div>
                                         </form-group>
                                     </div>
                                 </div>

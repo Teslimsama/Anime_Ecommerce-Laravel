@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Paystack;
 use App\Models\Cart;
+use App\Models\Order;
+use Helper;
+use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Models\Shipping;
 
 class PaystackController extends Controller
 {
@@ -16,6 +20,43 @@ class PaystackController extends Controller
      */
     public function redirectToGateway(Request $request)
     {
+        $order = new Order();
+        $order_data = $request->all();
+        $order_data['order_number'] = 'ORD-' . strtoupper(Str::random(10));
+        $order_data['user_id'] = $request->user()->id;
+        $order_data['product_id'] = $request->product_id;
+        $order_data['shipping_id'] = $request->shipping;
+        $shipping = Shipping::where('id', $order_data['shipping_id'])->pluck('price');
+        $order_data['sub_total'] = Helper::totalCartPrice();
+        $order_data['quantity'] = Helper::cartCount();
+        $order_data['payment_method'] = $request->payment_method;
+        $order_data['payment_status'] = 'paid';
+        if (session('coupon')) {
+            $order_data['coupon'] = session('coupon')['value'];
+            $order_data['coupon_id'] = session('coupon')['id'];
+            $order_data['influencer_id'] = session('coupon')['influencer_id'];
+        }
+        if ($request->shipping) {
+            if (session('coupon')) {
+                $order_data['total_amount'] = Helper::totalCartPrice() + $shipping[0] - session('coupon')['value'];
+            } else {
+                $order_data['total_amount'] = Helper::totalCartPrice() + $shipping[0];
+            }
+        } else {
+            if (session('coupon')) {
+                $order_data['total_amount'] = Helper::totalCartPrice() - session('coupon')['value'];
+            } else {
+                $order_data['total_amount'] = Helper::totalCartPrice();
+            }
+        }
+        $order->fill($order_data);
+        $order->save();
+        // Update the 'order_id' in the cart
+        Cart::where('user_id', auth()->user()->id)
+            ->where('order_id', null)
+            ->update(['order_id' => $order->id]);
+
+        // Continue with Paystack integration
         $cart = Cart::where('user_id', auth()->user()->id)
             ->where('order_id', null)
             ->get()
@@ -38,11 +79,13 @@ class PaystackController extends Controller
         $data['metadata'] = [
             'invoiceId' => $data['invoice_id']
         ];
-        $data['amount'] = $this->formatPrice($this->getTotalPrice($data['items']));
+        $data['amount'] = $this->formatPrice($order_data['total_amount']);
         $data['email'] = auth()->user()->email;
-        $data['callback_url'] = route('payment.callback');
+        $data['callback_url'] = route('payment');
+        // dd($data);
 
-        return Paystack::getAuthorizationUrl()->redirectNow();
+        // Redirect to Paystack for payment
+        return Paystack::getAuthorizationUrl($data)->redirectNow();
     }
 
     /**
@@ -57,29 +100,18 @@ class PaystackController extends Controller
         $status = $paymentDetails['data']['status'];
 
         if ($status == "success") {
-            // Payment successful, handle accordingly
-            // For example, update database, send email, etc.
-            return redirect()->route('payment.success');
+            request()->session()->flash('success', 'You have successfully paid through Paystack! Thank You');
+            session()->forget('cart');
+            session()->forget('coupon');
+            return redirect()->route('home');
         } else {
             // Payment failed, handle accordingly
-            return redirect()->route('payment.failure');
+
+            request()->session()->flash('error', 'Something went wrong please try again!!!');
+            return redirect()->route('home');
         }
     }
 
-    /**
-     * Get total price of items in cart
-     *
-     * @param array $items
-     * @return float
-     */
-    private function getTotalPrice(array $items)
-    {
-        $total = 0;
-        foreach ($items as $item) {
-            $total += $item['price'] * $item['qty'];
-        }
-        return $total;
-    }
 
     /**
      * Format price to kobo (integer)
